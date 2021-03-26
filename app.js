@@ -24,7 +24,12 @@ mongoose.connect(connect, {useUnifiedTopology: true,useNewUrlParser: true});
 
 const postSchema = {
   title: String,
-  content: String
+  content: String,
+  date: String
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now
+  // }
 };
 
 const Post = mongoose.model("Post", postSchema);
@@ -52,6 +57,7 @@ app.get("/compose", function(req, res){
 app.post("/compose", function(req, res){
   const post = new Post({
     title: req.body.postTitle,
+    date: req.body.postDate,
     content: req.body.postBody
   });
 
@@ -68,6 +74,7 @@ app.get("/posts/:postId", function(req, res){ //how to tap into new entries to c
   Post.findOne({_id: requestedPostId}, function(err, post){
     res.render("post", {
       title: post.title,
+      date: post.date,
       content: post.content
     });
   });
