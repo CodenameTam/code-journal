@@ -84,3 +84,6 @@ app.get("/posts/:postId", function(req, res){ //how to tap into new entries to c
 app.listen(3000, function() {
   console.log("Server has started.");
 });
+
+
+module.exports = app;
