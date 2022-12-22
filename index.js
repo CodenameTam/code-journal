@@ -80,11 +80,7 @@ app.get("/posts/:postId", function(req, res){ //how to tap into new entries to c
   });
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
 
-app.listen(port, function() {
+app.listen(3000, function() {
   console.log("Server has started.");
 });
