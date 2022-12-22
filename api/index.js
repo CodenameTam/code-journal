@@ -35,26 +35,26 @@ const postSchema = {
 const Post = mongoose.model("Post", postSchema);
 
 
-app.get("../views/home", function(req, res){
+app.get("/views/home", function(req, res){
   
   Post.find({}, function(err, posts){
     res.render("home", {startingContent: homeStartingContent, posts: posts});
   });
 });
 
-app.get("../views/home", function(req, res){
+app.get("/views/home", function(req, res){
   res.render("about", {aboutContent: aboutContent});
 });
 
-app.get("../views/ontact", function(req, res){
+app.get("/views/ontact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 });
 
-app.get("../views/compose", function(req, res){
+app.get("/views/compose", function(req, res){
   res.render("compose");
 });
 
-app.post("../views/compose", function(req, res){
+app.post("/views/compose", function(req, res){
   const post = new Post({
     title: req.body.postTitle,
     date: req.body.postDate,
